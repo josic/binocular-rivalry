@@ -1,0 +1,18 @@
+
+  data {
+    Ntotal <- length(y)
+   # xm <- mean(x)
+    #ym <- mean(y)
+  }
+  model {
+  for ( i in 1:Ntotal ) {
+  y[i] ~ dt( beta0 + beta1 * x[i] , 1/sigma^2, 4 )
+  }
+  # Priors vague 
+  beta0 ~ dnorm( 0 , 1/(10)^4 )  
+  beta1 ~ dnorm( 0 , 1/(10)^4 )
+  sigma ~ dunif( 1.0E-3 , 1.0E+3 )
+  #nu <- nuMinusOne+1
+  #nuMinusOne ~ dexp(1/29.0)
+  }
+  
